@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const Todo = require('../models/todos');
 const mongoose = require('mongoose');
 
@@ -7,21 +6,19 @@ const router = express.Router();
 // route for Home-Page
 
 router.get('/fetch', async (req, res, next) => {
-  console.log('ok');  
-    res.send('This respond is to prove that all is working good');   
+  console.log('ok');
+  res.send('This respond is to prove that all is working good');
 });
 
-router.get('/add', async (req, res, next) => {
+router.post('/add', async (req, res, next) => {
   const todo = new Todo({
-    text: req.body.username,
-    status: req.body.email,
+    text: req.body.text,
+    status: req.body.status,
   })
   await todo.save();
-  console.log(todo + 'saved'); 
-  res.send('saved');      
+  console.log(todo.text + 'saved');
+  res.send(todo.text  + ' saved');
 });
-
-
 
 router.get('/', (req, res) => {
   res.render('index');

@@ -5,7 +5,7 @@ import EditTodo from "../components/EditTodo";
 import AddTodo from "../components/AddTodo";
 import Login from "../components/Login";
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     todos: state.todos,
     loading:  state.loading,
     error: state.error,

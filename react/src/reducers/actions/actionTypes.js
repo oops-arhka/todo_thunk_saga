@@ -10,3 +10,5 @@ export const SEND_REQUEST_ERROR = "SEND_REQUEST_ERROR";
 
 export const SEND_REQUEST = "SEND_REQUEST";
 
+export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";
+

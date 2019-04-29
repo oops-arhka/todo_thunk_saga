@@ -1,4 +1,4 @@
-import { ADD_TODO, DEL_TODO, EDIT_TODO, SEND_REQUEST, SEND_REQUEST_ERROR, SEND_REQUEST_SUCCESS } from './actions/actionTypes'
+import { ADD_TODO, DEL_TODO, EDIT_TODO, SEND_REQUEST, SEND_REQUEST_ERROR, SEND_REQUEST_SUCCESS, ADD_TODO_SUCCESS } from './actions/actionTypes'
 
 const initialState = {
     todos: [],
@@ -11,16 +11,24 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case ADD_TODO: {
-            return Object.assign({}, state, { todos: [...state.todos, action.payload] })
+            return Object.assign({}, state, { todos: [...state.todos, action.payload] }, {loading: true,} )
         }
 
-        case DEL_TODO: {
-            return Object.assign({}, state, { todos: [...state.todos.filter((el) => el.id != action.id)] })
-        }
+        case ADD_TODO_SUCCESS: {
+            return  {...state, loading: false, message: action.payload.content }                
+        }    
 
-        case EDIT_TODO: {
-            return Object.assign({}, state, { todos: [...state.todos.map((el) => action.id === el.id ? { ...el, content: action.content } : el)] })
-        }
+        // case ADD_TODO: {
+        //     return Object.assign({}, state, { todos: [...state.todos, action.payload] })
+        // }
+
+        // case DEL_TODO: {
+        //     return Object.assign({}, state, { todos: [...state.todos.filter((el) => el.id != action.id)] })
+        // }
+
+        // case EDIT_TODO: {
+        //     return Object.assign({}, state, { todos: [...state.todos.map((el) => action.id === el.id ? { ...el, content: action.content } : el)] })
+        // }
 
         //////////////////////
 
