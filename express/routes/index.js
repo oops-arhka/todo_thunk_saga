@@ -1,6 +1,7 @@
 const express = require('express');
-const { sessionChecker } = require('../middleware/auth');
-const User = require('../models/users');
+const router = express.Router();
+const Todo = require('../models/todos');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 // route for Home-Page
@@ -9,6 +10,18 @@ router.get('/fetch', async (req, res, next) => {
   console.log('ok');  
     res.send('This respond is to prove that all is working good');   
 });
+
+router.get('/add', async (req, res, next) => {
+  const todo = new Todo({
+    text: req.body.username,
+    status: req.body.email,
+  })
+  await todo.save();
+  console.log(todo + 'saved'); 
+  res.send('saved');      
+});
+
+
 
 router.get('/', (req, res) => {
   res.render('index');

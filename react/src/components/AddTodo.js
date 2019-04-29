@@ -10,6 +10,7 @@ class AddTodo extends React.Component {
             input: "",
         };
     }
+    
 
     updateInput = input => {
         this.setState({ input });
